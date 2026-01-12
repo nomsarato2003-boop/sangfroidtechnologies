@@ -75,18 +75,16 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* ERP Modules */}
+                    {/* Company */}
                     <div>
                         <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
                             <div className="w-8 h-0.5 bg-gradient-to-r from-orange-500 to-purple-500"></div>
-                            ERP Modules
+                            Company
                         </h3>
                         <ul className="space-y-3">
                             {[
-                                { label: 'Human Capital Management', path: '/services/erp#hcm' },
-                                { label: 'Financial Control', path: '/services/erp#finance' },
-                                { label: 'Materials Management', path: '/services/erp#materials' },
-                                { label: 'CRM Solutions', path: '/services/erp#crm' },
+                                { label: 'About Us', path: '/about' },
+                                { label: 'Contact', path: '/contact' },
                             ].map((item) => (
                                 <li key={item.label}>
                                     <Link
@@ -101,18 +99,17 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Company */}
+                    {/* Legal */}
                     <div>
                         <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
                             <div className="w-8 h-0.5 bg-gradient-to-r from-purple-500 to-orange-500"></div>
-                            Company
+                            Legal
                         </h3>
                         <ul className="space-y-3">
                             {[
-                                { label: 'About Us', path: '/about' },
-                                { label: 'Our Team', path: '/company/team' },
-                                { label: 'Careers', path: '/careers' },
-                                { label: 'Contact', path: '/contact' },
+                                { label: 'Privacy Policy', path: '/privacy-policy' },
+                                { label: 'Terms of Service', path: '/terms-of-service' },
+                                { label: 'Cookie Policy', path: '/cookies' },
                             ].map((item) => (
                                 <li key={item.label}>
                                     <Link
@@ -125,31 +122,6 @@ const Footer = () => {
                                 </li>
                             ))}
                         </ul>
-                    </div>
-                </div>
-
-                {/* Newsletter Section */}
-                <div className="border-t border-slate-800 py-10">
-                    <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
-                        <div className="text-center lg:text-left">
-                            <h4 className="text-xl font-semibold text-white mb-2">Stay Updated with Sangfroid</h4>
-                            <p className="text-slate-400">
-                                Subscribe for the latest insights on enterprise solutions and technology innovation.
-                            </p>
-                        </div>
-                        <form className="flex gap-3 w-full max-w-md">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="flex-1 px-5 py-3 rounded-xl bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-white placeholder-slate-500 transition-all duration-300"
-                            />
-                            <button
-                                type="submit"
-                                className="bg-gradient-to-r from-purple-500 to-orange-500 hover:from-purple-600 hover:to-orange-600 text-white px-8 py-3 rounded-xl transition-all duration-300 font-semibold whitespace-nowrap shadow-lg hover:shadow-orange-500/25 hover:scale-105"
-                            >
-                                Subscribe
-                            </button>
-                        </form>
                     </div>
                 </div>
 
@@ -197,6 +169,9 @@ const Footer = () => {
                         </Link>
                         <Link href="/terms-of-service" className="text-sm text-slate-500 hover:text-orange-400 transition-colors duration-300">
                             Terms of Service
+                        </Link>
+                        <Link href="/cookies" className="text-sm text-slate-500 hover:text-orange-400 transition-colors duration-300">
+                            Cookies
                         </Link>
                     </div>
                 </div>

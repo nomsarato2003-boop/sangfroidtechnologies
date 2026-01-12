@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
 
@@ -31,7 +32,8 @@ export default function Home() {
         </svg>
       ),
       color: "from-purple-500 to-violet-500",
-      href: "/services/erp"
+      href: "/services/erp",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
     },
     {
       title: "Messaging Application",
@@ -42,7 +44,8 @@ export default function Home() {
         </svg>
       ),
       color: "from-orange-500 to-amber-500",
-      href: "/services/messaging"
+      href: "/services/messaging",
+      image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80"
     },
     {
       title: "E-commerce Solutions",
@@ -53,7 +56,8 @@ export default function Home() {
         </svg>
       ),
       color: "from-purple-500 to-orange-500",
-      href: "/services/ecommerce"
+      href: "/services/ecommerce",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"
     }
   ];
 
@@ -348,30 +352,42 @@ export default function Home() {
               >
                 <Link
                   href={service.href}
-                  className="group relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border border-slate-700 hover:border-orange-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20 overflow-hidden cursor-pointer block h-full"
+                  className="group relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 hover:border-orange-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20 overflow-hidden cursor-pointer block h-full"
                 >
-                  <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${service.color} opacity-10 rounded-full blur-3xl group-hover:opacity-30 transition-all duration-500`}></div>
+                  {/* Service Image */}
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-60`}></div>
+                    <div className="absolute bottom-4 left-4">
+                      <motion.div
+                        className={`inline-flex p-3 rounded-xl bg-white/20 backdrop-blur-sm shadow-lg`}
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                      >
+                        {service.icon}
+                      </motion.div>
+                    </div>
+                  </div>
 
-                  <motion.div
-                    className={`relative inline-flex p-4 rounded-xl bg-gradient-to-br ${service.color} mb-6 shadow-lg`}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  >
-                    {service.icon}
-                  </motion.div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-orange-400 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-purple-200 mb-4 leading-relaxed text-sm">
+                      {service.description}
+                    </p>
 
-                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-orange-400 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-purple-200 mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  <div className="inline-flex items-center gap-2 text-orange-400 font-semibold group-hover:gap-4 transition-all">
-                    Learn More
-                    <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                    <div className="inline-flex items-center gap-2 text-orange-400 font-semibold group-hover:gap-4 transition-all">
+                      Learn More
+                      <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
                   </div>
                 </Link>
               </motion.div>

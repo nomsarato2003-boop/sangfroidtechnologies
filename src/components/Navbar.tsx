@@ -16,14 +16,6 @@ function Navbar() {
         { label: "E-commerce Solutions", path: "/services/ecommerce" },
       ],
     },
-    {
-      label: "Company",
-      dropdown: [
-        { label: "About Us", path: "/about" },
-        { label: "Our Team", path: "/company/team" },
-        { label: "Careers", path: "/careers" },
-      ],
-    },
   ];
 
   const toggleDropdown = (label: string) => {
@@ -94,6 +86,13 @@ function Navbar() {
               ))}
 
               <Link
+                href="/about"
+                className="text-white hover:text-orange-300 transition-colors duration-300 py-2 font-medium text-base whitespace-nowrap cursor-pointer"
+              >
+                About
+              </Link>
+
+              <Link
                 href="/contact"
                 className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 whitespace-nowrap cursor-pointer shadow-lg hover:shadow-orange-500/25"
               >
@@ -160,6 +159,13 @@ function Navbar() {
                 </div>
               </div>
             ))}
+
+            <Link
+              href="/about"
+              className="block text-white hover:text-orange-300 px-3 py-3 rounded-lg text-base font-medium transition-colors duration-300 cursor-pointer hover:bg-white/5"
+            >
+              About
+            </Link>
 
             <div className="pt-4">
               <Link

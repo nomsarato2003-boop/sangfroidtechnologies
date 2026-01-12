@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 
 export default function AboutPage() {
@@ -80,8 +81,13 @@ export default function AboutPage() {
           </div>
           <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-slate-200">
             <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="w-32 h-32 bg-gradient-to-br from-purple-500 to-orange-500 rounded-full flex items-center justify-center text-white text-4xl font-bold">
-                TH
+              <div className="w-40 h-40 relative rounded-full overflow-hidden border-4 border-purple-500 shadow-lg">
+                <Image
+                  src="/assets/founder.jpeg"
+                  alt="Timothy Hwizah - Founder & CEO"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h3 className="text-2xl font-bold text-slate-800 mb-2">Timothy Hwizah</h3>
