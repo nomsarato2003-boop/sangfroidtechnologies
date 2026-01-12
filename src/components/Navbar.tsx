@@ -2,183 +2,151 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  const navLinks = [
-    {
-      label: "Services",
-      dropdown: [
-        { label: "Enterprise Resource Planning", path: "/services/erp" },
-        { label: "Messaging Application", path: "/services/messaging" },
-        { label: "E-commerce Solutions", path: "/services/ecommerce" },
-      ],
-    },
+  const services = [
+    { name: "ERP Solutions", href: "/services/erp", desc: "Complete business management" },
+    { name: "Messaging", href: "/services/messaging", desc: "Team communication" },
+    { name: "E-commerce", href: "/services/ecommerce", desc: "Online store platform" },
   ];
-
-  const toggleDropdown = (label: string) => {
-    setActiveDropdown(activeDropdown === label ? null : label);
-  };
-
-  const toggleMobileMenu = () => {
-    setIsOpen(!isOpen);
-    setActiveDropdown(null);
-  };
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-purple-900 to-violet-900 shadow-lg backdrop-blur-sm bg-opacity-95">
-        <div className="max-w-[1440px] mx-auto px-6">
-          <div className="flex justify-between items-center h-20">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center cursor-pointer">
-                <div className="text-white font-bold text-2xl">
-                  <span className="text-orange-400">SANGFROID</span>
-                  <span className="text-white ml-1">TECHNOLOGIES</span>
-                </div>
+            <Link href="/" className="font-bold text-2xl text-purple-700">
+              Sangfroid
+            </Link>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-1">
+              {/* Services Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown("services")}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <button className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-full hover:bg-gray-50 transition-colors">
+                  Apps
+                  <svg className={`w-4 h-4 transition-transform ${activeDropdown === "services" ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <AnimatePresence>
+                  {activeDropdown === "services" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden"
+                    >
+                      <div className="p-2">
+                        {services.map((service) => (
+                          <Link
+                            key={service.href}
+                            href={service.href}
+                            className="block px-4 py-3 rounded-lg hover:bg-purple-50 transition-colors"
+                          >
+                            <span className="block text-sm font-medium text-gray-900">{service.name}</span>
+                            <span className="block text-xs text-gray-500 mt-0.5">{service.desc}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <Link href="/about" className="px-4 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-full hover:bg-gray-50 transition-colors">
+                About
+              </Link>
+              <Link href="/contact" className="px-4 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-full hover:bg-gray-50 transition-colors">
+                Contact
               </Link>
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link
-                href="/"
-                className="text-white hover:text-orange-300 transition-colors duration-300 py-2 font-medium text-base whitespace-nowrap cursor-pointer"
-              >
-                Home
+            {/* CTA Buttons */}
+            <div className="hidden md:flex items-center gap-3">
+              <Link href="/contact" className="text-sm text-gray-600 hover:text-gray-900 font-medium">
+                Sign in
               </Link>
-
-              {navLinks.map((link) => (
-                <div
-                  key={link.label}
-                  className="relative group"
-                  onMouseEnter={() => setActiveDropdown(link.label)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  <button className="text-white hover:text-orange-300 transition-colors duration-300 py-2 font-medium text-base whitespace-nowrap cursor-pointer flex items-center">
-                    {link.label}
-                    <i className="fas fa-chevron-down ml-2 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
-                  </button>
-
-                  {/* Dropdown */}
-                  <div
-                    className={`absolute left-0 mt-2 w-64 rounded-lg shadow-xl bg-gradient-to-b from-purple-900 to-violet-800 border border-orange-500/20 overflow-hidden transition-all duration-300 ${activeDropdown === link.label
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 -translate-y-2 pointer-events-none"
-                      }`}
-                  >
-                    <div className="py-2">
-                      {link.dropdown.map((item) => (
-                        <Link
-                          key={item.label}
-                          href={item.path}
-                          className="block px-4 py-3 text-sm text-white hover:text-orange-300 hover:bg-white/5 transition-all duration-300 cursor-pointer border-l-2 border-transparent hover:border-orange-400"
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              <Link
-                href="/about"
-                className="text-white hover:text-orange-300 transition-colors duration-300 py-2 font-medium text-base whitespace-nowrap cursor-pointer"
-              >
-                About
-              </Link>
-
               <Link
                 href="/contact"
-                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 whitespace-nowrap cursor-pointer shadow-lg hover:shadow-orange-500/25"
+                className="bg-purple-700 hover:bg-purple-800 text-white text-sm font-medium py-2.5 px-5 rounded-full transition-colors"
               >
-                Contact Us
+                Start now - It&apos;s free
               </Link>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={toggleMobileMenu}
-                className="text-white hover:text-orange-300 focus:outline-none transition-colors duration-300 cursor-pointer p-2 rounded-lg hover:bg-white/10"
-              >
-                <i
-                  className={`fas ${isOpen ? "fa-times text-xl" : "fa-bars text-xl"
-                    }`}
-                ></i>
-              </button>
-            </div>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 text-gray-600 hover:text-gray-900"
+            >
+              {isOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        <div
-          className={`md:hidden bg-gradient-to-b from-purple-900 to-violet-900 transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-            }`}
-        >
-          <div className="px-4 pt-2 pb-4 space-y-1">
-            <Link
-              href="/"
-              className="block text-white hover:text-orange-300 px-3 py-3 rounded-lg text-base font-medium transition-colors duration-300 cursor-pointer hover:bg-white/5"
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
             >
-              Home
-            </Link>
-
-            {navLinks.map((link) => (
-              <div key={link.label} className="relative">
-                <button
-                  onClick={() => toggleDropdown(link.label)}
-                  className="w-full flex justify-between items-center text-white hover:text-orange-300 px-3 py-3 rounded-lg text-base font-medium transition-colors duration-300 cursor-pointer hover:bg-white/5"
-                >
-                  {link.label}
-                  <i
-                    className={`fas fa-chevron-${activeDropdown === link.label ? "up" : "down"
-                      } ml-2 text-xs transition-transform duration-300`}
-                  ></i>
-                </button>
-
-                <div
-                  className={`transition-all duration-300 ease-in-out overflow-hidden ${activeDropdown === link.label
-                      ? "max-h-96 opacity-100"
-                      : "max-h-0 opacity-0"
-                    }`}
-                >
-                  {link.dropdown.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.path}
-                      className="block pl-8 pr-4 py-3 text-sm text-gray-200 hover:text-orange-300 hover:bg-white/5 transition-colors duration-300 cursor-pointer border-l-2 border-transparent hover:border-orange-400"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
+              <div className="px-6 py-4 space-y-1">
+                <p className="text-xs font-medium text-gray-400 uppercase tracking-wider px-3 py-2">Apps</p>
+                {services.map((service) => (
+                  <Link
+                    key={service.href}
+                    href={service.href}
+                    className="block px-3 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-lg hover:bg-gray-50"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+                <div className="border-t border-gray-100 my-3"></div>
+                <Link href="/about" className="block px-3 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-lg hover:bg-gray-50" onClick={() => setIsOpen(false)}>
+                  About
+                </Link>
+                <Link href="/contact" className="block px-3 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-lg hover:bg-gray-50" onClick={() => setIsOpen(false)}>
+                  Contact
+                </Link>
+                <div className="pt-4">
+                  <Link
+                    href="/contact"
+                    className="block bg-purple-700 text-white text-center py-3 rounded-full text-sm font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Start now - It&apos;s free
+                  </Link>
                 </div>
               </div>
-            ))}
-
-            <Link
-              href="/about"
-              className="block text-white hover:text-orange-300 px-3 py-3 rounded-lg text-base font-medium transition-colors duration-300 cursor-pointer hover:bg-white/5"
-            >
-              About
-            </Link>
-
-            <div className="pt-4">
-              <Link
-                href="/contact"
-                className="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-orange-500/25"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
-      <div className="h-20" aria-hidden="true"></div>
+      <div className="h-16"></div>
     </>
   );
 }

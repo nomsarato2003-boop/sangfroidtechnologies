@@ -1,183 +1,147 @@
-"use client";
-
 import Link from "next/link";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
-    return (
-        <footer className="relative bg-slate-900 text-gray-300 overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute inset-0 opacity-30">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px]"></div>
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-[128px]"></div>
-            </div>
+  return (
+    <footer className="bg-gray-900 text-gray-300">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+          {/* Apps */}
+          <div>
+            <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Apps</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/services/erp" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  ERP Solutions
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/messaging" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Messaging
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/ecommerce" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  E-commerce
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            {/* Grid Pattern */}
-            <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          {/* ERP Modules */}
+          <div>
+            <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">ERP Modules</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/services/erp" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  HR Management
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/erp" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Finance
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/erp" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Inventory
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/erp" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  CRM
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-8">
-                {/* Main Footer Content */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                    {/* Company Info */}
-                    <div className="lg:col-span-1">
-                        <Link href="/" className="inline-block mb-6">
-                            <div className="text-2xl font-bold">
-                                <span className="text-orange-400">SANGFROID</span>
-                                <span className="text-white ml-1">TECH</span>
-                            </div>
-                        </Link>
-                        <p className="text-slate-400 mb-6 leading-relaxed max-w-sm">
-                            Empowering businesses with innovative enterprise solutions including ERP systems,
-                            messaging applications, and e-commerce platforms since 2020.
-                        </p>
-                        <div className="flex space-x-3">
-                            {[
-                                { name: 'Facebook', icon: <FaFacebook className="w-4 h-4" />, url: '#', hoverBg: 'hover:bg-blue-600' },
-                                { name: 'Twitter', icon: <FaTwitter className="w-4 h-4" />, url: '#', hoverBg: 'hover:bg-sky-500' },
-                                { name: 'LinkedIn', icon: <FaLinkedin className="w-4 h-4" />, url: '#', hoverBg: 'hover:bg-blue-700' },
-                                { name: 'Instagram', icon: <FaInstagram className="w-4 h-4" />, url: '#', hoverBg: 'hover:bg-pink-600' },
-                                { name: 'WhatsApp', icon: <FaWhatsapp className="w-4 h-4" />, url: '#', hoverBg: 'hover:bg-green-600' },
-                            ].map((social) => (
-                                <a
-                                    key={social.name}
-                                    href={social.url}
-                                    className={`bg-slate-800 ${social.hoverBg} text-white w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg border border-slate-700 hover:border-transparent`}
-                                    aria-label={social.name}
-                                >
-                                    {social.icon}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
+          {/* Company */}
+          <div>
+            <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Company</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/about" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-                    {/* Services */}
-                    <div>
-                        <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-                            <div className="w-8 h-0.5 bg-gradient-to-r from-purple-500 to-orange-500"></div>
-                            Services
-                        </h3>
-                        <ul className="space-y-3">
-                            {[
-                                { label: 'Enterprise Resource Planning', path: '/services/erp' },
-                                { label: 'Messaging Application', path: '/services/messaging' },
-                                { label: 'E-commerce Solutions', path: '/services/ecommerce' },
-                            ].map((item) => (
-                                <li key={item.label}>
-                                    <Link
-                                        href={item.path}
-                                        className="text-slate-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2 group"
-                                    >
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-orange-500 transition-all duration-300"></span>
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+          {/* Legal */}
+          <div>
+            <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Legal</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/privacy-policy" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms-of-service" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/cookies" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Cookies
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-                    {/* Company */}
-                    <div>
-                        <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-                            <div className="w-8 h-0.5 bg-gradient-to-r from-orange-500 to-purple-500"></div>
-                            Company
-                        </h3>
-                        <ul className="space-y-3">
-                            {[
-                                { label: 'About Us', path: '/about' },
-                                { label: 'Contact', path: '/contact' },
-                            ].map((item) => (
-                                <li key={item.label}>
-                                    <Link
-                                        href={item.path}
-                                        className="text-slate-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2 group"
-                                    >
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-purple-500 transition-all duration-300"></span>
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+          {/* Contact */}
+          <div>
+            <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">Contact</h3>
+            <ul className="space-y-3 text-sm text-gray-400">
+              <li>2202 St Mary&apos;s</li>
+              <li>Chitungwiza, Zimbabwe</li>
+              <li className="pt-2">
+                <a href="mailto:info@sangfroidtechnologies.com" className="hover:text-white transition-colors">
+                  info@sangfroidtechnologies.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-                    {/* Legal */}
-                    <div>
-                        <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-                            <div className="w-8 h-0.5 bg-gradient-to-r from-purple-500 to-orange-500"></div>
-                            Legal
-                        </h3>
-                        <ul className="space-y-3">
-                            {[
-                                { label: 'Privacy Policy', path: '/privacy-policy' },
-                                { label: 'Terms of Service', path: '/terms-of-service' },
-                                { label: 'Cookie Policy', path: '/cookies' },
-                            ].map((item) => (
-                                <li key={item.label}>
-                                    <Link
-                                        href={item.path}
-                                        className="text-slate-400 hover:text-orange-400 transition-colors duration-300 flex items-center gap-2 group"
-                                    >
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-orange-500 transition-all duration-300"></span>
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
+        {/* Bottom Footer */}
+        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-4">
+            <Link href="/" className="font-bold text-xl text-white">
+              Sangfroid
+            </Link>
+            <span className="text-sm text-gray-500">
+              &copy; {new Date().getFullYear()} All rights reserved.
+            </span>
+          </div>
 
-                {/* Contact Info Bar */}
-                <div className="border-t border-slate-800 py-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
-                        <div className="flex items-center justify-center md:justify-start gap-3">
-                            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center">
-                                <i className="fas fa-map-marker-alt text-orange-400"></i>
-                            </div>
-                            <div>
-                                <p className="text-sm text-slate-500">Location</p>
-                                <p className="text-white">2202 St Mary&apos;s, Chitungwiza</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center justify-center gap-3">
-                            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center">
-                                <i className="fas fa-envelope text-orange-400"></i>
-                            </div>
-                            <div>
-                                <p className="text-sm text-slate-500">Email</p>
-                                <p className="text-white">info@sangfroidtechnologies.com</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center justify-center md:justify-end gap-3">
-                            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center">
-                                <i className="fas fa-clock text-orange-400"></i>
-                            </div>
-                            <div>
-                                <p className="text-sm text-slate-500">Hours</p>
-                                <p className="text-white">Mon-Fri: 8AM-5PM CAT</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Bottom Footer */}
-                <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-sm text-slate-500">
-                        &copy; {new Date().getFullYear()} <span className="text-slate-400">Sangfroid Technologies</span>. All rights reserved.
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-6">
-                        <Link href="/privacy-policy" className="text-sm text-slate-500 hover:text-orange-400 transition-colors duration-300">
-                            Privacy Policy
-                        </Link>
-                        <Link href="/terms-of-service" className="text-sm text-slate-500 hover:text-orange-400 transition-colors duration-300">
-                            Terms of Service
-                        </Link>
-                        <Link href="/cookies" className="text-sm text-slate-500 hover:text-orange-400 transition-colors duration-300">
-                            Cookies
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
+          {/* Social Links */}
+          <div className="flex items-center gap-4">
+            <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Twitter">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

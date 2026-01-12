@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, FormEvent } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Message = {
   text: string;
@@ -12,7 +13,7 @@ const ChatBot = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
-      text: "Hello! I'm your Sangfroid Technologies assistant. How can I help you today?",
+      text: "Hello! How can I help you today?",
       isUser: false,
       timestamp: new Date()
     },
@@ -38,26 +39,17 @@ const ChatBot = () => {
       timestamp: new Date()
     };
 
-    // Simulate bot thinking delay
-    setTimeout(() => {
-      const botResponses = [
-        "I understand you're asking about:",
-        "That's a great question! Let me help you with that.",
-        "Thanks for your inquiry. Here's what I can tell you:",
-        "I'd be happy to assist you with that!"
-      ];
+    setMessages((prev) => [...prev, userMessage]);
+    setCurrentMessage("");
 
+    setTimeout(() => {
       const botResponse: Message = {
-        text: `${botResponses[Math.floor(Math.random() * botResponses.length)]} "${currentMessage}". This is a demo response - our team will provide detailed assistance shortly.`,
+        text: "Thanks for your message! This is a demo - our team will assist you shortly.",
         isUser: false,
         timestamp: new Date()
       };
-
       setMessages((prev) => [...prev, botResponse]);
-    }, 1000 + Math.random() * 1000);
-
-    setMessages((prev) => [...prev, userMessage]);
-    setCurrentMessage("");
+    }, 1000);
   };
 
   useEffect(() => {
@@ -67,109 +59,106 @@ const ChatBot = () => {
   }, [messages]);
 
   return (
-    <div className={`fixed bottom-4 right-4 z-50 ${isChatOpen ? "w-80 sm:w-96" : "w-auto"}`}>
-      {isChatOpen ? (
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-purple-200 max-h-[80vh] flex flex-col">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-purple-600 to-orange-500 p-3 flex justify-between items-center flex-shrink-0">
-            <div className="flex items-center space-x-3">
-              <div className="bg-white/20 p-2 rounded-full">
-                <i className="fas fa-robot text-white text-sm" />
-              </div>
-              <div>
-                <span className="text-white font-semibold block">Sangfroid Assistant</span>
-                <span className="text-orange-200 text-xs">Online - Ready to help</span>
-              </div>
-            </div>
-            <button
-              onClick={() => setIsChatOpen(false)}
-              className="text-white hover:text-orange-200 transition-all duration-200 transform hover:rotate-90 p-2"
-            >
-              <i className="fas fa-times text-lg" />
-            </button>
-          </div>
-
-          {/* Chat Messages */}
-          <div
-            ref={chatContainerRef}
-            className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-purple-50 to-white min-h-[200px] max-h-[50vh]"
+    <div className="fixed bottom-6 right-6 z-50">
+      <AnimatePresence>
+        {isChatOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ duration: 0.2 }}
+            className="w-80 bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[70vh] mb-4"
           >
-            {messages.map((message, index) => (
-              <div
-                key={index}
-                className={`flex ${message.isUser ? "justify-end" : "justify-start"} group`}
-              >
-                <div className={`flex flex-col max-w-[85%] ${message.isUser ? "items-end" : "items-start"}`}>
-                  {/* Message Bubble */}
-                  <div
-                    className={`relative p-4 rounded-2xl shadow-sm ${message.isUser
-                        ? "bg-gradient-to-br from-purple-600 to-orange-500 text-white rounded-br-md"
-                        : "bg-white text-purple-800 border border-purple-100 rounded-bl-md shadow-md"
-                      }`}
-                  >
-                    {/* Tail for message bubble */}
-                    <div className={`absolute bottom-0 w-3 h-3 ${message.isUser
-                        ? "right-0 transform translate-x-1 bg-orange-500 rotate-45"
-                        : "left-0 transform -translate-x-1 bg-white border-l border-b border-purple-100 rotate-45"
-                      }`} />
-
-                    <p className="text-sm leading-relaxed relative z-10">{message.text}</p>
-                  </div>
-
-                  {/* Timestamp */}
-                  <div className={`flex items-center space-x-1 mt-2 px-1 ${message.isUser ? "text-purple-600" : "text-purple-500"
-                    }`}>
-                    <i className="fas fa-clock text-xs opacity-70" />
-                    <span className="text-xs font-medium opacity-80">
-                      {formatTime(message.timestamp)}
-                    </span>
-                    {message.isUser && (
-                      <i className="fas fa-check text-xs opacity-70 ml-1" />
-                    )}
-                  </div>
-                </div>
+            {/* Header */}
+            <div className="bg-purple-600 px-4 py-3 flex justify-between items-center flex-shrink-0">
+              <div>
+                <span className="text-white font-medium text-sm block">Sangfroid</span>
+                <span className="text-purple-200 text-xs">Online</span>
               </div>
-            ))}
-          </div>
+              <button
+                onClick={() => setIsChatOpen(false)}
+                className="text-white/70 hover:text-white transition-colors p-1"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
 
-          {/* Input Form */}
-          <form onSubmit={handleSendMessage} className="border-t border-purple-200 bg-white p-3 flex-shrink-0">
-            <div className="flex space-x-3">
-              <div className="flex-1 relative">
+            {/* Messages */}
+            <div
+              ref={chatContainerRef}
+              className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50 min-h-[200px] max-h-[40vh]"
+            >
+              {messages.map((message, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}
+                >
+                  <div className={`max-w-[80%] ${message.isUser ? "order-1" : ""}`}>
+                    <div
+                      className={`px-4 py-2 rounded-2xl text-sm ${
+                        message.isUser
+                          ? "bg-purple-600 text-white rounded-br-md"
+                          : "bg-white text-gray-900 shadow-sm rounded-bl-md"
+                      }`}
+                    >
+                      {message.text}
+                    </div>
+                    <div className={`text-xs text-gray-400 mt-1 ${message.isUser ? "text-right" : ""}`}>
+                      {formatTime(message.timestamp)}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Input */}
+            <form onSubmit={handleSendMessage} className="p-3 border-t border-gray-100 bg-white flex-shrink-0">
+              <div className="flex gap-2">
                 <input
                   type="text"
                   value={currentMessage}
                   onChange={(e) => setCurrentMessage(e.target.value)}
-                  placeholder="Type your message here..."
-                  className="w-full px-4 py-3 border border-purple-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-purple-900 placeholder-purple-400 text-sm bg-purple-50/50"
+                  placeholder="Type a message..."
+                  className="flex-1 px-4 py-2 bg-gray-100 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                 />
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-400">
-                  <i className="fas fa-edit text-sm" />
-                </div>
+                <motion.button
+                  type="submit"
+                  disabled={!currentMessage.trim()}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-purple-600 text-white p-2 rounded-full hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                </motion.button>
               </div>
-              <button
-                type="submit"
-                disabled={!currentMessage.trim()}
-                className="bg-gradient-to-r from-purple-600 to-orange-500 text-white px-5 py-3 rounded-xl hover:from-purple-700 hover:to-orange-600 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 disabled:transform-none disabled:hover:shadow-none disabled:cursor-not-allowed"
-              >
-                <i className="fas fa-paper-plane" />
-              </button>
-            </div>
-            <p className="text-xs text-purple-500 text-center mt-3">
-              Typically replies in a few seconds
-            </p>
-          </form>
-        </div>
-      ) : (
-        <button
-          onClick={() => setIsChatOpen(true)}
-          className="group bg-gradient-to-r from-purple-600 to-orange-500 text-white p-5 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-110"
-        >
-          <div className="relative">
-            <i className="fas fa-comments text-xl" />
-          </div>
-        </button>
-      )}
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.button
+        onClick={() => setIsChatOpen(!isChatOpen)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 transition-colors"
+      >
+        {isChatOpen ? (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        )}
+      </motion.button>
     </div>
   );
 };
