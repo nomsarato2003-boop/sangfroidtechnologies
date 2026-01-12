@@ -67,11 +67,11 @@ const ChatBot = () => {
   }, [messages]);
 
   return (
-    <div className={`fixed bottom-6 right-6 z-50 ${isChatOpen ? "w-80" : "w-auto"}`}>
+    <div className={`fixed bottom-4 right-4 z-50 ${isChatOpen ? "w-80 sm:w-96" : "w-auto"}`}>
       {isChatOpen ? (
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-purple-200">
+        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-purple-200 max-h-[80vh] flex flex-col">
           {/* Header */}
-          <div className="bg-gradient-to-r from-purple-600 to-orange-500 p-4 flex justify-between items-center">
+          <div className="bg-gradient-to-r from-purple-600 to-orange-500 p-3 flex justify-between items-center flex-shrink-0">
             <div className="flex items-center space-x-3">
               <div className="bg-white/20 p-2 rounded-full">
                 <i className="fas fa-robot text-white text-sm" />
@@ -92,7 +92,7 @@ const ChatBot = () => {
           {/* Chat Messages */}
           <div
             ref={chatContainerRef}
-            className="h-96 overflow-y-auto p-4 space-y-6 bg-gradient-to-b from-purple-50 to-white"
+            className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-purple-50 to-white min-h-[200px] max-h-[50vh]"
           >
             {messages.map((message, index) => (
               <div
@@ -133,7 +133,7 @@ const ChatBot = () => {
           </div>
 
           {/* Input Form */}
-          <form onSubmit={handleSendMessage} className="border-t border-purple-200 bg-white p-4">
+          <form onSubmit={handleSendMessage} className="border-t border-purple-200 bg-white p-3 flex-shrink-0">
             <div className="flex space-x-3">
               <div className="flex-1 relative">
                 <input
