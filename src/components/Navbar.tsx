@@ -8,7 +8,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  const services = [
+  const apps = [
     { name: "ERP Solutions", href: "/services/erp", desc: "Complete business management" },
     { name: "Messaging", href: "/services/messaging", desc: "Team communication" },
     { name: "E-commerce", href: "/services/ecommerce", desc: "Online store platform" },
@@ -17,45 +17,45 @@ function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center h-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex justify-between items-center h-14">
             {/* Logo */}
-            <Link href="/" className="font-bold text-2xl text-purple-700">
+            <Link href="/" className="font-bold text-xl text-[#714b67]">
               Sangfroid
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1">
-              {/* Services Dropdown */}
+              {/* Apps Dropdown */}
               <div
                 className="relative"
-                onMouseEnter={() => setActiveDropdown("services")}
+                onMouseEnter={() => setActiveDropdown("apps")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-full hover:bg-gray-50 transition-colors">
+                <button className="flex items-center gap-1 px-3 py-2 text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">
                   Apps
-                  <svg className={`w-4 h-4 transition-transform ${activeDropdown === "services" ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-4 h-4 transition-transform ${activeDropdown === "apps" ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 <AnimatePresence>
-                  {activeDropdown === "services" && (
+                  {activeDropdown === "apps" && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden"
+                      className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden"
                     >
-                      <div className="p-2">
-                        {services.map((service) => (
+                      <div className="py-2">
+                        {apps.map((app) => (
                           <Link
-                            key={service.href}
-                            href={service.href}
-                            className="block px-4 py-3 rounded-lg hover:bg-purple-50 transition-colors"
+                            key={app.href}
+                            href={app.href}
+                            className="block px-4 py-2 hover:bg-gray-50 transition-colors"
                           >
-                            <span className="block text-sm font-medium text-gray-900">{service.name}</span>
-                            <span className="block text-xs text-gray-500 mt-0.5">{service.desc}</span>
+                            <span className="block text-sm font-medium text-gray-900">{app.name}</span>
+                            <span className="block text-xs text-gray-500">{app.desc}</span>
                           </Link>
                         ))}
                       </div>
@@ -64,24 +64,27 @@ function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <Link href="/about" className="px-4 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-full hover:bg-gray-50 transition-colors">
+              <Link href="/about" className="px-3 py-2 text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">
                 About
               </Link>
-              <Link href="/contact" className="px-4 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-full hover:bg-gray-50 transition-colors">
+              <Link href="/contact" className="px-3 py-2 text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors">
                 Contact
               </Link>
             </div>
 
-            {/* CTA Buttons */}
+            {/* CTA */}
             <div className="hidden md:flex items-center gap-3">
               <Link href="/contact" className="text-sm text-gray-600 hover:text-gray-900 font-medium">
                 Sign in
               </Link>
               <Link
                 href="/contact"
-                className="bg-purple-700 hover:bg-purple-800 text-white text-sm font-medium py-2.5 px-5 rounded-full transition-colors"
+                className="bg-[#00A09D] hover:bg-[#017E84] text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors inline-flex items-center gap-1"
               >
-                Start now - It&apos;s free
+                Try it free
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </Link>
             </div>
 
@@ -114,31 +117,31 @@ function Navbar() {
               className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
             >
               <div className="px-6 py-4 space-y-1">
-                <p className="text-xs font-medium text-gray-400 uppercase tracking-wider px-3 py-2">Apps</p>
-                {services.map((service) => (
+                <p className="text-xs font-medium text-gray-400 uppercase tracking-wider py-2">Apps</p>
+                {apps.map((app) => (
                   <Link
-                    key={service.href}
-                    href={service.href}
-                    className="block px-3 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-lg hover:bg-gray-50"
+                    key={app.href}
+                    href={app.href}
+                    className="block py-2 text-gray-600 hover:text-gray-900 text-sm"
                     onClick={() => setIsOpen(false)}
                   >
-                    {service.name}
+                    {app.name}
                   </Link>
                 ))}
                 <div className="border-t border-gray-100 my-3"></div>
-                <Link href="/about" className="block px-3 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-lg hover:bg-gray-50" onClick={() => setIsOpen(false)}>
+                <Link href="/about" className="block py-2 text-gray-600 hover:text-gray-900 text-sm" onClick={() => setIsOpen(false)}>
                   About
                 </Link>
-                <Link href="/contact" className="block px-3 py-2 text-gray-700 hover:text-purple-700 text-sm font-medium rounded-lg hover:bg-gray-50" onClick={() => setIsOpen(false)}>
+                <Link href="/contact" className="block py-2 text-gray-600 hover:text-gray-900 text-sm" onClick={() => setIsOpen(false)}>
                   Contact
                 </Link>
                 <div className="pt-4">
                   <Link
                     href="/contact"
-                    className="block bg-purple-700 text-white text-center py-3 rounded-full text-sm font-medium"
+                    className="block bg-[#00A09D] text-white text-center py-2.5 rounded-lg text-sm font-medium"
                     onClick={() => setIsOpen(false)}
                   >
-                    Start now - It&apos;s free
+                    Try it free
                   </Link>
                 </div>
               </div>
@@ -146,7 +149,7 @@ function Navbar() {
           )}
         </AnimatePresence>
       </nav>
-      <div className="h-16"></div>
+      <div className="h-14"></div>
     </>
   );
 }
