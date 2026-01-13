@@ -143,6 +143,11 @@ export default function AboutPage() {
                   Technologies to bridge the gap between innovative enterprise solutions and
                   African businesses. His vision continues to drive the company&apos;s growth.
                 </p>
+                <p className="text-gray-500 mt-4">
+                  The need for digitalization is influenced by the 3Es i.e Embrace, Empower, Emancipate. 
+                  The founder has embraced his African people, digital knowledge on their behalf, to empower 
+                  and emancipate the African people inconsiderate of creed, color, ability, religion, age, and gender.
+                </p>
               </div>
             </div>
           </motion.div>
