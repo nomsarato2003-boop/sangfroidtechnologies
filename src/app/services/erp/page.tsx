@@ -4,17 +4,27 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import {
+  Users,
+  DollarSign,
+  Package,
+  ContactRound,
+  ShoppingCart,
+  Factory,
+  Truck,
+  BarChart3,
+} from "lucide-react";
 
 export default function ERPPage() {
   const modules = [
-    { name: "HR Management", icon: "👥", desc: "Complete workforce management" },
-    { name: "Finance", icon: "💰", desc: "Accounting & budgeting" },
-    { name: "Inventory", icon: "📦", desc: "Stock & warehouse control" },
-    { name: "CRM", icon: "🤝", desc: "Customer relationships" },
-    { name: "Procurement", icon: "🛒", desc: "Purchase management" },
-    { name: "Production", icon: "🏭", desc: "Manufacturing control" },
-    { name: "Transport", icon: "🚚", desc: "Fleet & logistics" },
-    { name: "Analytics", icon: "📈", desc: "Business intelligence" },
+    { name: "HR Management", icon: Users, desc: "Complete workforce management" },
+    { name: "Finance", icon: DollarSign, desc: "Accounting & budgeting" },
+    { name: "Inventory", icon: Package, desc: "Stock & warehouse control" },
+    { name: "CRM", icon: ContactRound, desc: "Customer relationships" },
+    { name: "Procurement", icon: ShoppingCart, desc: "Purchase management" },
+    { name: "Production", icon: Factory, desc: "Manufacturing control" },
+    { name: "Transport", icon: Truck, desc: "Fleet & logistics" },
+    { name: "Analytics", icon: BarChart3, desc: "Business intelligence" },
   ];
 
   return (
@@ -72,7 +82,7 @@ export default function ERPPage() {
         </div>
       </section>
 
-      {/* Floating Dashboard Image */}
+      {/* ERP Video Section */}
       <section className="relative px-6 -mt-20 mb-16">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -84,13 +94,19 @@ export default function ERPPage() {
             {/* Background glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-3xl transform rotate-1 scale-105 opacity-10"></div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <Image
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80"
-                alt="ERP Dashboard"
-                width={1400}
-                height={700}
-                className="w-full h-auto"
-              />
+              <div className="aspect-video bg-gray-900">
+                <video
+                  src="/assets/erp.mp4"
+                  muted
+                  loop
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-cover"
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -115,24 +131,27 @@ export default function ERPPage() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {modules.map((module, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: idx * 0.05 }}
-                viewport={{ once: true }}
-                className="p-6 bg-white rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-lg transition-all group"
-              >
-                <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
-                  {module.icon}
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-purple-700 transition-colors">
-                  {module.name}
-                </h3>
-                <p className="text-sm text-gray-500">{module.desc}</p>
-              </motion.div>
-            ))}
+            {modules.map((module, idx) => {
+              const IconComponent = module.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  viewport={{ once: true }}
+                  className="p-6 bg-white rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-lg transition-all group"
+                >
+                  <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                    <IconComponent className="w-7 h-7 text-purple-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-purple-700 transition-colors">
+                    {module.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">{module.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

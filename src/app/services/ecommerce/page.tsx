@@ -4,40 +4,48 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import {
+  Users,
+  DollarSign,
+  Package,
+  ContactRound,
+  ShoppingCart,
+  Factory,
+  Truck,
+  BarChart3,
+} from "lucide-react";
 
-export default function EcommercePage() {
-  const features = [
-    { name: "Online Store", icon: "🏪", desc: "Beautiful storefront" },
-    { name: "Payments", icon: "💳", desc: "Multiple options" },
-    { name: "Inventory", icon: "📦", desc: "Real-time tracking" },
-    { name: "Shipping", icon: "🚚", desc: "Delivery integration" },
-    { name: "Analytics", icon: "📊", desc: "Sales insights" },
-    { name: "Mobile", icon: "📱", desc: "Mobile-optimized" },
-    { name: "Security", icon: "🔒", desc: "SSL & encryption" },
-    { name: "Support", icon: "💬", desc: "Customer service" },
+export default function ERPPage() {
+  const modules = [
+    { name: "HR Management", icon: Users, desc: "Complete workforce management" },
+    { name: "Finance", icon: DollarSign, desc: "Accounting & budgeting" },
+    { name: "Inventory", icon: Package, desc: "Stock & warehouse control" },
+    { name: "CRM", icon: ContactRound, desc: "Customer relationships" },
+    { name: "Procurement", icon: ShoppingCart, desc: "Purchase management" },
+    { name: "Production", icon: Factory, desc: "Manufacturing control" },
+    { name: "Transport", icon: Truck, desc: "Fleet & logistics" },
+    { name: "Analytics", icon: BarChart3, desc: "Business intelligence" },
   ];
-
-  const payments = ["EcoCash", "OneMoney", "Visa", "Mastercard", "Bank Transfer"];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Gradient */}
       <section className="relative pt-16 pb-32 px-6 overflow-hidden">
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-emerald-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-white to-blue-50"></div>
 
         {/* Decorative blobs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
 
         <div className="relative max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
           >
-            E-commerce Platform
+            Enterprise Resource Planning
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -45,9 +53,9 @@ export default function EcommercePage() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
           >
-            Sell online
+            All-in-one ERP
             <br />
-            <span className="text-purple-700">with confidence.</span>
+            <span className="text-purple-700">for growing businesses.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -55,7 +63,7 @@ export default function EcommercePage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-xl text-gray-500 max-w-2xl mx-auto mb-10"
           >
-            Launch your online store with local payment support, inventory management, and everything you need to grow.
+            Manage HR, Finance, Inventory, CRM, and more — all integrated in one powerful platform.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,14 +75,14 @@ export default function EcommercePage() {
               href="/contact"
               className="bg-purple-700 hover:bg-purple-800 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-purple-200"
             >
-              Start selling
+              Request a demo
             </Link>
-            <span className="text-gray-400 text-sm">Free trial available</span>
+            <span className="text-gray-400 text-sm">Free consultation</span>
           </motion.div>
         </div>
       </section>
 
-      {/* Floating Store Screenshot */}
+      {/* E-commerce Video Section */}
       <section className="relative px-6 -mt-20 mb-16">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -84,21 +92,27 @@ export default function EcommercePage() {
             className="relative"
           >
             {/* Background glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl transform rotate-1 scale-105 opacity-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-3xl transform rotate-1 scale-105 opacity-10"></div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <Image
-                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&q=80"
-                alt="E-commerce Platform"
-                width={1400}
-                height={700}
-                className="w-full h-auto"
-              />
+              <div className="aspect-video bg-gray-900">
+                <video
+                  src="/assets/ecommerce.mp4"
+                  muted
+                  loop
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-cover"
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Modules Grid */}
       <section className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -109,44 +123,47 @@ export default function EcommercePage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Everything to run your store
+              Everything you need, integrated
             </h2>
             <p className="text-gray-500 text-lg">
-              From product listings to delivery — we&apos;ve got you covered.
+              Modular design — use what you need, add more as you grow.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {features.map((feature, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: idx * 0.05 }}
-                viewport={{ once: true }}
-                className="p-6 bg-white rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-lg transition-all group"
-              >
-                <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
-                  {feature.icon}
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-purple-700 transition-colors">
-                  {feature.name}
-                </h3>
-                <p className="text-sm text-gray-500">{feature.desc}</p>
-              </motion.div>
-            ))}
+            {modules.map((module, idx) => {
+              const IconComponent = module.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  viewport={{ once: true }}
+                  className="p-6 bg-white rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-lg transition-all group"
+                >
+                  <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                    <IconComponent className="w-7 h-7 text-purple-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-purple-700 transition-colors">
+                    {module.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">{module.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Payments Section with Gradient */}
+      {/* Features with Gradient BG */}
       <section className="relative py-24 px-6 overflow-hidden">
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-600"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800"></div>
 
         {/* Decorative Elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-green-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
 
         <div className="relative max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -157,16 +174,26 @@ export default function EcommercePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold text-white mb-6">
-                Local payment methods
+                Why choose our ERP?
               </h2>
-              <p className="text-white/80 mb-8">
-                Accept payments the way your customers prefer. We support all major local and international payment options.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {payments.map((payment, idx) => (
-                  <span key={idx} className="bg-white/20 backdrop-blur text-white px-4 py-2 rounded-full text-sm font-medium">
-                    {payment}
-                  </span>
+              <div className="space-y-6">
+                {[
+                  { title: "Fully Integrated", desc: "All modules work together seamlessly" },
+                  { title: "Cloud-Based", desc: "Access from anywhere, anytime" },
+                  { title: "Scalable", desc: "Grows with your business" },
+                  { title: "Local Support", desc: "Zimbabwe-based support team" },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex gap-4">
+                    <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white">{item.title}</h4>
+                      <p className="text-purple-100 text-sm">{item.desc}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -179,53 +206,13 @@ export default function EcommercePage() {
               className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500"
             >
               <Image
-                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80"
-                alt="Payment Methods"
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+                alt="Business Analytics"
                 width={800}
                 height={600}
                 className="w-full h-auto"
               />
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Solutions for every business
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { title: "B2C", desc: "Sell directly to consumers", icon: "🛒" },
-              { title: "B2B", desc: "Wholesale & business sales", icon: "🏢" },
-              { title: "Marketplace", desc: "Multi-vendor platform", icon: "🏬" },
-            ].map((solution, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="p-8 bg-white rounded-2xl border border-gray-100 text-center hover:shadow-lg hover:border-purple-200 transition-all"
-              >
-                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-3xl mb-4 mx-auto">
-                  {solution.icon}
-                </div>
-                <h3 className="font-semibold text-gray-900 text-xl mb-2">{solution.title}</h3>
-                <p className="text-gray-500">{solution.desc}</p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -240,23 +227,23 @@ export default function EcommercePage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Ready to launch your store?
+            Ready to streamline your operations?
           </h2>
           <p className="text-gray-500 text-lg mb-10">
-            Join businesses across Zimbabwe selling online with our platform.
+            Get started with a free demo and see how our ERP can transform your business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
               className="bg-purple-700 hover:bg-purple-800 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-purple-200"
             >
-              Get started
+              Schedule a demo
             </Link>
             <Link
               href="/contact"
               className="border-2 border-gray-200 hover:border-purple-200 text-gray-700 hover:text-purple-700 px-8 py-4 rounded-full font-medium text-lg transition-colors"
             >
-              See demo
+              Contact sales
             </Link>
           </div>
         </motion.div>

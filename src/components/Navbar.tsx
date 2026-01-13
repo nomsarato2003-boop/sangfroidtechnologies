@@ -72,20 +72,9 @@ function Navbar() {
               </Link>
             </div>
 
-            {/* CTA */}
+            {/* CTA - REMOVED "Sign in" and "Try it free" */}
             <div className="hidden md:flex items-center gap-3">
-              <Link href="/contact" className="text-sm text-gray-600 hover:text-gray-900 font-medium">
-                Sign in
-              </Link>
-              <Link
-                href="/contact"
-                className="bg-[#00A09D] hover:bg-[#017E84] text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors inline-flex items-center gap-1"
-              >
-                Try it free
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              {/* Empty - removed the buttons */}
             </div>
 
             {/* Mobile menu button */}
@@ -135,15 +124,7 @@ function Navbar() {
                 <Link href="/contact" className="block py-2 text-gray-600 hover:text-gray-900 text-sm" onClick={() => setIsOpen(false)}>
                   Contact
                 </Link>
-                <div className="pt-4">
-                  <Link
-                    href="/contact"
-                    className="block bg-[#00A09D] text-white text-center py-2.5 rounded-lg text-sm font-medium"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Try it free
-                  </Link>
-                </div>
+                {/* REMOVED the "Try it free" button from mobile */}
               </div>
             </motion.div>
           )}

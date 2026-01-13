@@ -4,15 +4,23 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import {
+  Handshake, // Client First
+  Lightbulb, // Innovation
+  Sparkles, // Integrity
+  Trophy, // Excellence
+  Globe, // Local Expertise
+  Users, // Partnership
+} from "lucide-react";
 
 export default function AboutPage() {
   const values = [
-    { title: "Client First", icon: "🤝", description: "We put our clients first, understanding their unique needs." },
-    { title: "Innovation", icon: "💡", description: "We explore new technologies to provide cutting-edge solutions." },
-    { title: "Integrity", icon: "✨", description: "We operate with transparency and honesty in everything." },
-    { title: "Excellence", icon: "🏆", description: "We strive for the highest quality in everything we do." },
-    { title: "Local Expertise", icon: "🌍", description: "We understand the African market and local business needs." },
-    { title: "Partnership", icon: "🤲", description: "We grow alongside our clients with scalable solutions." },
+    { title: "Client First", icon: Handshake, description: "We put our clients first, understanding their unique needs." },
+    { title: "Innovation", icon: Lightbulb, description: "We explore new technologies to provide cutting-edge solutions." },
+    { title: "Integrity", icon: Sparkles, description: "We operate with transparency and honesty in everything." },
+    { title: "Excellence", icon: Trophy, description: "We strive for the highest quality in everything we do." },
+    { title: "Local Expertise", icon: Globe, description: "We understand the African market and local business needs." },
+    { title: "Partnership", icon: Users, description: "We grow alongside our clients with scalable solutions." },
   ];
 
   return (
@@ -40,7 +48,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-purple-50">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -68,10 +76,6 @@ export default function AboutPage() {
 
               {/* Stats */}
               <div className="flex gap-8 mt-8">
-                <div>
-                  <div className="text-3xl font-bold text-purple-700">50+</div>
-                  <div className="text-sm text-gray-500">Clients</div>
-                </div>
                 <div>
                   <div className="text-3xl font-bold text-purple-700">4+</div>
                   <div className="text-sm text-gray-500">Years</div>
@@ -120,7 +124,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="bg-gray-50 p-8 rounded-2xl"
+            className="bg-purple-50 p-8 rounded-2xl"
           >
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-32 h-32 relative rounded-full overflow-hidden flex-shrink-0 bg-purple-100">
@@ -146,7 +150,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-purple-50">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -159,22 +163,25 @@ export default function AboutPage() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="p-6 bg-white rounded-2xl border border-gray-100 hover:shadow-lg transition-all"
-              >
-                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-4">
-                  {value.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{value.title}</h3>
-                <p className="text-gray-500 text-sm">{value.description}</p>
-              </motion.div>
-            ))}
+            {values.map((value, index) => {
+              const IconComponent = value.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="p-6 bg-white rounded-2xl border border-gray-100 hover:shadow-lg transition-all"
+                >
+                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                    <IconComponent className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{value.title}</h3>
+                  <p className="text-gray-500 text-sm">{value.description}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
