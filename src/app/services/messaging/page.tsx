@@ -8,8 +8,6 @@ import {
   MessageSquare, // Real-time Chat
   Users, // Group Channels
   Paperclip, // File Sharing
-  Phone, // Voice Calls
-  Video, // Video Calls
   Lock, // Encryption
   Search, // Search
   Bell, // Notifications
@@ -20,8 +18,6 @@ export default function MessagingPage() {
     { name: "Real-time Chat", icon: MessageSquare, desc: "Instant message delivery" },
     { name: "Group Channels", icon: Users, desc: "Team collaboration spaces" },
     { name: "File Sharing", icon: Paperclip, desc: "Share documents easily" },
-    { name: "Voice Calls", icon: Phone, desc: "Built-in voice calling" },
-    { name: "Video Calls", icon: Video, desc: "Face-to-face meetings" },
     { name: "Encryption", icon: Lock, desc: "End-to-end security" },
     { name: "Search", icon: Search, desc: "Find anything fast" },
     { name: "Notifications", icon: Bell, desc: "Smart alerts" },
@@ -124,7 +120,7 @@ export default function MessagingPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {features.map((feature, idx) => {
               const IconComponent = feature.icon;
               return (
