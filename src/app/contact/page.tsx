@@ -11,22 +11,45 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! We'll contact you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Something went wrong");
+    }
   };
 
   return (
@@ -135,10 +158,25 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="bg-purple-700 hover:bg-purple-800 text-white font-medium py-3 px-8 rounded-full transition-colors"
+                    disabled={status === "loading"}
+                    className="bg-purple-700 hover:bg-purple-800 disabled:bg-purple-400 disabled:cursor-not-allowed text-white font-medium py-3 px-8 rounded-full transition-colors"
                   >
-                    Send message
+                    {status === "loading" ? "Sending..." : "Send message"}
                   </button>
+
+                  {status === "success" && (
+                    <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-xl">
+                      <p className="text-green-700 font-medium">Message sent successfully!</p>
+                      <p className="text-green-600 text-sm">We&apos;ll get back to you within 24 hours.</p>
+                    </div>
+                  )}
+
+                  {status === "error" && (
+                    <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
+                      <p className="text-red-700 font-medium">Failed to send message</p>
+                      <p className="text-red-600 text-sm">{errorMessage}</p>
+                    </div>
+                  )}
                 </form>
               </div>
             </motion.div>
