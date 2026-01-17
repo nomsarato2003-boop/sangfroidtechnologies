@@ -50,11 +50,15 @@ const moduleData: Record<string, { name: string; description: string; video: str
   }
 };
 
-export default function ModuleVideoPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
-  const module = moduleData[slug];
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
 
-  if (!module) {
+export default function ModuleVideoPage({ params }: PageProps) {
+  const { slug } = use(params);
+  const moduleInfo = moduleData[slug];
+
+  if (!moduleInfo) {
     notFound();
   }
 
@@ -80,10 +84,10 @@ export default function ModuleVideoPage({ params }: { params: Promise<{ slug: st
               ERP Module
             </div>
             <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
-              {module.name}
+              {moduleInfo.name}
             </h1>
             <p className="text-lg text-gray-500 max-w-2xl">
-              {module.description}
+              {moduleInfo.description}
             </p>
           </motion.div>
         </div>
@@ -102,7 +106,7 @@ export default function ModuleVideoPage({ params }: { params: Promise<{ slug: st
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
               <div className="aspect-video bg-gray-900">
                 <video
-                  src={module.video}
+                  src={moduleInfo.video}
                   controls
                   autoPlay
                   muted
@@ -129,7 +133,7 @@ export default function ModuleVideoPage({ params }: { params: Promise<{ slug: st
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            Interested in {module.name}?
+            Interested in {moduleInfo.name}?
           </h2>
           <p className="text-gray-500 mb-8">
             Get in touch with our team to learn more about how this module can help your business.
