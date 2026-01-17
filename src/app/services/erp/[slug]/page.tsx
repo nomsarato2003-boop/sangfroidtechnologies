@@ -4,7 +4,8 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import { useParams, notFound } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const moduleData: Record<string, { name: string; description: string; video: string }> = {
   "hcbpm": {
@@ -51,11 +52,23 @@ const moduleData: Record<string, { name: string; description: string; video: str
 
 export default function ModuleVideoPage() {
   const params = useParams();
-  const slug = params.slug as string;
-  const moduleInfo = moduleData[slug];
+  const router = useRouter();
+  const slug = params?.slug as string | undefined;
+  const moduleInfo = slug ? moduleData[slug] : null;
 
-  if (!moduleInfo) {
-    notFound();
+  useEffect(() => {
+    if (slug && !moduleInfo) {
+      router.replace("/services/erp");
+    }
+  }, [slug, moduleInfo, router]);
+
+  // Handle loading state or invalid slug
+  if (!slug || !moduleInfo) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-gray-500">Loading...</div>
+      </div>
+    );
   }
 
   return (
