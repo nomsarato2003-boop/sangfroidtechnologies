@@ -612,39 +612,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 px-6 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-3 gap-8 text-center"
-          >
-            {[
-              { value: "4+", label: "Years" },
-              { value: "99%", label: "Uptime" }
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
-                <div className="relative">
-                  <div className="text-5xl font-bold text-gray-900 mb-1 group-hover:scale-110 transition-transform duration-300">{stat.value}</div>
-                  <div className="text-gray-500 text-sm">{stat.label}</div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Testimonial */}
       <section className="py-20 px-6 bg-white">
         <motion.div
