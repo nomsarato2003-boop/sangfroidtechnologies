@@ -32,10 +32,10 @@ export default function EcommercePage() {
       {/* Hero Section with Gradient */}
       <section className="relative pt-16 pb-32 px-6 overflow-hidden">
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-purple-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-purple-50"></div>
 
         {/* Decorative blobs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
         <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
 
         <div className="relative max-w-5xl mx-auto text-center">
@@ -43,7 +43,7 @@ export default function EcommercePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium mb-6"
           >
             E-commerce Solutions
           </motion.div>
@@ -55,7 +55,7 @@ export default function EcommercePage() {
           >
             Sell online with
             <br />
-            <span className="text-orange-600">confidence.</span>
+            <span className="text-purple-600">confidence.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,7 @@ export default function EcommercePage() {
           >
             <Link
               href="/contact"
-              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-orange-200"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-purple-200"
             >
               Start selling online
             </Link>
@@ -92,7 +92,7 @@ export default function EcommercePage() {
             className="relative"
           >
             {/* Background glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-purple-500 rounded-3xl transform rotate-1 scale-105 opacity-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-purple-500 rounded-3xl transform rotate-1 scale-105 opacity-10"></div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
               <div className="aspect-video bg-gray-900">
                 <video
@@ -140,12 +140,12 @@ export default function EcommercePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                   viewport={{ once: true }}
-                  className="p-6 bg-white rounded-2xl border border-gray-100 hover:border-orange-200 hover:shadow-lg transition-all group"
+                  className="p-6 bg-white rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-lg transition-all group"
                 >
-                  <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
-                    <IconComponent className="w-7 h-7 text-orange-600" />
+                  <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                    <IconComponent className="w-7 h-7 text-purple-600" />
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-orange-600 transition-colors">
+                  <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-purple-600 transition-colors">
                     {feature.name}
                   </h3>
                   <p className="text-sm text-gray-500">{feature.desc}</p>
@@ -159,10 +159,10 @@ export default function EcommercePage() {
       {/* Features with Gradient BG */}
       <section className="relative py-24 px-6 overflow-hidden">
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-500 via-orange-600 to-purple-700"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700"></div>
 
         {/* Decorative Elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
 
         <div className="relative max-w-5xl mx-auto">
@@ -191,7 +191,7 @@ export default function EcommercePage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-white">{item.title}</h4>
-                      <p className="text-orange-100 text-sm">{item.desc}</p>
+                      <p className="text-purple-100 text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -246,7 +246,7 @@ export default function EcommercePage() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
@@ -275,13 +275,13 @@ export default function EcommercePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-orange-200"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-full font-medium text-lg transition-all hover:shadow-lg hover:shadow-purple-200"
             >
               Get started today
             </Link>
             <Link
               href="/contact"
-              className="border-2 border-gray-200 hover:border-orange-200 text-gray-700 hover:text-orange-600 px-8 py-4 rounded-full font-medium text-lg transition-colors"
+              className="border-2 border-gray-200 hover:border-purple-200 text-gray-700 hover:text-purple-600 px-8 py-4 rounded-full font-medium text-lg transition-colors"
             >
               Contact sales
             </Link>
