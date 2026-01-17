@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
-import { use } from "react";
 
 const moduleData: Record<string, { name: string; description: string; video: string }> = {
   "hcbpm": {
@@ -51,11 +50,11 @@ const moduleData: Record<string, { name: string; description: string; video: str
 };
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
 export default function ModuleVideoPage({ params }: PageProps) {
-  const { slug } = use(params);
+  const { slug } = params;
   const moduleInfo = moduleData[slug];
 
   if (!moduleInfo) {
