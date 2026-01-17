@@ -4,7 +4,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
-import { notFound } from "next/navigation";
+import { useParams, notFound } from "next/navigation";
 
 const moduleData: Record<string, { name: string; description: string; video: string }> = {
   "hcbpm": {
@@ -49,12 +49,9 @@ const moduleData: Record<string, { name: string; description: string; video: str
   }
 };
 
-interface PageProps {
-  params: { slug: string };
-}
-
-export default function ModuleVideoPage({ params }: PageProps) {
-  const { slug } = params;
+export default function ModuleVideoPage() {
+  const params = useParams();
+  const slug = params.slug as string;
   const moduleInfo = moduleData[slug];
 
   if (!moduleInfo) {
