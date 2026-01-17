@@ -12,6 +12,7 @@ function Navbar() {
     { name: "ERP Solutions", href: "/services/erp", desc: "Complete business management" },
     { name: "Messaging", href: "/services/messaging", desc: "Team communication" },
     { name: "E-commerce", href: "/services/ecommerce", desc: "Online store platform" },
+    { name: "Digital Bank", href: "/services/digital-bank", desc: "Digital banking solutions" },
   ];
 
   return (

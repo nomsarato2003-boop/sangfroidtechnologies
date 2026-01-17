@@ -25,6 +25,11 @@ const Footer = () => {
                   E-commerce
                 </Link>
               </li>
+              <li>
+                <Link href="/services/digital-bank" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Digital Bank
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -33,22 +38,22 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">ERP Modules</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/services/erp" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  HR Management
+                <Link href="/services/erp/hcbpm" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  HCBPM
                 </Link>
               </li>
               <li>
-                <Link href="/services/erp" className="text-gray-400 hover:text-white text-sm transition-colors">
+                <Link href="/services/erp/finance" className="text-gray-400 hover:text-white text-sm transition-colors">
                   Finance
                 </Link>
               </li>
               <li>
-                <Link href="/services/erp" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Inventory
+                <Link href="/services/erp/mm" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  MM
                 </Link>
               </li>
               <li>
-                <Link href="/services/erp" className="text-gray-400 hover:text-white text-sm transition-colors">
+                <Link href="/services/erp/crm" className="text-gray-400 hover:text-white text-sm transition-colors">
                   CRM
                 </Link>
               </li>
@@ -101,8 +106,8 @@ const Footer = () => {
               <li>2202 St Mary&apos;s</li>
               <li>Chitungwiza, Zimbabwe</li>
               <li className="pt-2">
-                <a href="mailto:info@sangfroidtechnologies.com" className="hover:text-white transition-colors">
-                  info@sangfroidtechnologies.com
+                <a href="mailto:support@sangfroidtechnologies.com" className="hover:text-white transition-colors">
+                  support@sangfroidtechnologies.com
                 </a>
               </li>
             </ul>

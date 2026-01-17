@@ -14,6 +14,7 @@ import {
   MessageSquare, // Messaging
   ShoppingCart, // E-commerce
   BarChart3, // Analytics
+  Landmark, // Digital Bank
 } from "lucide-react";
 
 export default function Home() {
@@ -58,13 +59,13 @@ export default function Home() {
 
   const apps = [
     { name: "ERP", href: "/services/erp", color: "#7c3aed", icon: Building2 }, // Purple
-    { name: "HR", href: "/services/erp", color: "#7c3aed", icon: Users }, // Purple
-    { name: "Finance", href: "/services/erp", color: "#8b5cf6", icon: DollarSign }, // Light Purple
-    { name: "Inventory", href: "/services/erp", color: "#a78bfa", icon: Package }, // Lighter Purple
-    { name: "CRM", href: "/services/erp", color: "#7c3aed", icon: ContactRound }, // Purple
+    { name: "HCBPM", href: "/services/erp/hcbpm", color: "#7c3aed", icon: Users }, // Purple
+    { name: "Finance", href: "/services/erp/finance", color: "#8b5cf6", icon: DollarSign }, // Light Purple
+    { name: "MM", href: "/services/erp/mm", color: "#a78bfa", icon: Package }, // Lighter Purple
+    { name: "CRM", href: "/services/erp/crm", color: "#7c3aed", icon: ContactRound }, // Purple
     { name: "Messaging", href: "/services/messaging", color: "#8b5cf6", icon: MessageSquare }, // Light Purple
     { name: "E-commerce", href: "/services/ecommerce", color: "#a78bfa", icon: ShoppingCart }, // Lighter Purple
-    { name: "Analytics", href: "/services/erp", color: "#7c3aed", icon: BarChart3 }, // Purple
+    { name: "Digital Bank", href: "/services/digital-bank", color: "#f97316", icon: Landmark }, // Orange
   ];
 
   return (
@@ -661,7 +662,7 @@ export default function Home() {
               Sangfroid transformed how we manage our business. Everything is now in one place.
             </p>
             <p className="text-gray-500 font-medium">
-              — Local Business Owner, Harare
+              — Business Owner, Harare
             </p>
           </div>
           

@@ -17,14 +17,14 @@ import {
 
 export default function ERPPage() {
   const modules = [
-    { name: "HR Management", icon: Users, desc: "Complete workforce management" },
-    { name: "Finance", icon: DollarSign, desc: "Accounting & budgeting" },
-    { name: "Inventory", icon: Package, desc: "Stock & warehouse control" },
-    { name: "CRM", icon: ContactRound, desc: "Customer relationships" },
-    { name: "Procurement", icon: ShoppingCart, desc: "Purchase management" },
-    { name: "Production", icon: Factory, desc: "Manufacturing control" },
-    { name: "Transport", icon: Truck, desc: "Fleet & logistics" },
-    { name: "Analytics", icon: BarChart3, desc: "Business intelligence" },
+    { name: "HCBPM", icon: Users, desc: "Complete workforce and business processes management", slug: "hcbpm" },
+    { name: "Finance", icon: DollarSign, desc: "Accounting & budgeting", slug: "finance" },
+    { name: "MM", icon: Package, desc: "Trace, track, and manage your inventory. Complete control of your warehouse and its workforce", slug: "mm" },
+    { name: "CRM", icon: ContactRound, desc: "Customer relationships", slug: "crm" },
+    { name: "Spending Management", icon: ShoppingCart, desc: "Strategic spend analysis and procurement optimization", slug: "spending-management" },
+    { name: "Engineering and Production", icon: Factory, desc: "Concurrently configure, plan, and execute maintenance and production", slug: "engineering-production" },
+    { name: "Transport", icon: Truck, desc: "Fleet & logistics", slug: "transport" },
+    { name: "Analytics", icon: BarChart3, desc: "Business intelligence", slug: "analytics" },
   ];
 
   return (
@@ -134,22 +134,23 @@ export default function ERPPage() {
             {modules.map((module, idx) => {
               const IconComponent = module.icon;
               return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: idx * 0.05 }}
-                  viewport={{ once: true }}
-                  className="p-6 bg-white rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-lg transition-all group"
-                >
-                  <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
-                    <IconComponent className="w-7 h-7 text-purple-600" />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-purple-700 transition-colors">
-                    {module.name}
-                  </h3>
-                  <p className="text-sm text-gray-500">{module.desc}</p>
-                </motion.div>
+                <Link key={idx} href={`/services/erp/${module.slug}`}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    viewport={{ once: true }}
+                    className="p-6 bg-white rounded-2xl border border-gray-100 hover:border-purple-200 hover:shadow-lg transition-all group cursor-pointer h-full"
+                  >
+                    <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                      <IconComponent className="w-7 h-7 text-purple-600" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-purple-700 transition-colors">
+                      {module.name}
+                    </h3>
+                    <p className="text-sm text-gray-500">{module.desc}</p>
+                  </motion.div>
+                </Link>
               );
             })}
           </div>
