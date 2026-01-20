@@ -90,11 +90,12 @@ export default function MessagingPage() {
             {/* Background glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-3xl transform rotate-1 scale-105 opacity-10"></div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <Image
-                src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1400&q=80"
-                alt="Messaging Platform"
-                width={1400}
-                height={700}
+              <video
+                src="/assets/messaging.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-auto"
               />
             </div>

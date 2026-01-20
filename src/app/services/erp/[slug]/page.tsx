@@ -5,12 +5,12 @@ const moduleData: Record<string, { name: string; description: string; video: str
   "hcbpm": {
     name: "HCBPM",
     description: "Human Capital and Business Process Management - Complete workforce and business processes management solution for your organization.",
-    video: "/assets/hr.mp4"
+    video: "/assets/HCBPM.mp4"
   },
   "finance": {
     name: "Finance",
     description: "Comprehensive financial management including accounting, budgeting, and financial reporting.",
-    video: "/assets/erp.mp4"
+    video: "/assets/finance.mp4"
   },
   "mm": {
     name: "Materials Management",
@@ -20,17 +20,17 @@ const moduleData: Record<string, { name: string; description: string; video: str
   "crm": {
     name: "CRM",
     description: "Customer Relationship Management - Build and maintain strong customer relationships with powerful tools.",
-    video: "/assets/erp.mp4"
+    video: "/assets/CRM.mp4"
   },
   "spending-management": {
     name: "Spending Management",
     description: "Strategic spend analysis and procurement optimization to maximize your purchasing power.",
-    video: "/assets/erp.mp4"
+    video: "/assets/spending.mp4"
   },
   "engineering-production": {
     name: "Engineering and Production",
     description: "Concurrently configure, plan, and execute maintenance and production operations.",
-    video: "/assets/erp.mp4"
+    video: "/assets/production.mp4"
   },
   "transport": {
     name: "Transport Management",
@@ -40,7 +40,7 @@ const moduleData: Record<string, { name: string; description: string; video: str
   "analytics": {
     name: "Analytics",
     description: "Business intelligence and analytics to make data-driven decisions.",
-    video: "/assets/erp.mp4"
+    video: "/assets/analytics.mp4"
   }
 };
 

@@ -90,11 +90,12 @@ export default function DigitalBankPage() {
             {/* Background glow */}
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-orange-500 rounded-3xl transform rotate-1 scale-105 opacity-10"></div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <Image
-                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1400&q=80"
-                alt="Digital Banking Platform"
-                width={1400}
-                height={700}
+              <video
+                src="/assets/fintech.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-auto"
               />
             </div>
