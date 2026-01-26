@@ -11,7 +11,12 @@
       "Bash(git add:*)",
       "WebFetch(domain:www.odoo.com)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: redesign website with Odoo-inspired modern SaaS style\n\n- Add gradient backgrounds with decorative blur blobs\n- Add floating images/screenshots on gradient sections\n- Update Navbar with dropdown menu and clean styling\n- Redesign Home page with app grid showcase and stats\n- Update ERP, Messaging, E-commerce pages with hero images\n- Add animated sections with Framer Motion\n- Update Footer with dark theme and multi-column layout\n- Improve typography with large bold headlines\n- Add hover effects and transitions throughout\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nrefactor: update Home and Navbar to match Odoo clean design style\n\n- Replace gradient backgrounds with clean white backgrounds\n- Add browser mockup frames for screenshots\n- Add hand-drawn SVG doodle arrows with dashed strokes\n- Update CTAs to teal color \\(#00A09D\\)\n- Use purple brand accent \\(#714b67\\) for logo\n- Simplify navigation with cleaner styling\n- Add letter-based colored icon boxes for apps grid\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nrefactor: update Home and Navbar to match Odoo clean design style\n\n- Replace gradient backgrounds with clean white backgrounds\n- Add browser mockup frames for screenshots\n- Add hand-drawn SVG doodle arrows with dashed strokes\n- Update CTAs to teal color \\(#00A09D\\)\n- Use purple brand accent \\(#714b67\\) for logo\n- Simplify navigation with cleaner styling\n- Add letter-based colored icon boxes for apps grid\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(git commit:*)",
+      "Bash(npx next build:*)",
+      "Bash(cat:*)"
     ]
   }
 }
