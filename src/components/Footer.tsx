@@ -106,8 +106,8 @@ const Footer = () => {
               <li>2202 St Mary&apos;s</li>
               <li>Chitungwiza, Zimbabwe</li>
               <li className="pt-2">
-                <a href="mailto:support@sangfroidtechnologies.com" className="hover:text-white transition-colors">
-                  support@sangfroidtechnologies.com
+                <a href="mailto:ceo@sangfroidtechnologies.com" className="hover:text-white transition-colors">
+                  ceo@sangfroidtechnologies.com
                 </a>
               </li>
             </ul>
