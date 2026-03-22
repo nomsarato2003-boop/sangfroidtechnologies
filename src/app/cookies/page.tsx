@@ -97,7 +97,7 @@ export default function CookiePolicyPage() {
               <div className="bg-gray-50 p-4 rounded-xl">
                 <p className="text-gray-900 font-medium">Sangfroid Technologies</p>
                 <p className="text-gray-600">2202 St Mary&apos;s, Chitungwiza, Zimbabwe</p>
-                <p className="text-gray-600">support@sangfroidtechnologies.com</p>
+                <p className="text-gray-600">ceo@sangfroidtechnologies.com</p>
               </div>
             </div>
           </div>

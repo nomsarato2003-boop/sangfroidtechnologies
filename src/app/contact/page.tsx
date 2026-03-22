@@ -197,8 +197,8 @@ export default function ContactPage() {
 
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-3">Email</h3>
-                  <a href="mailto:support@sangfroidtechnologies.com" className="text-purple-700 hover:underline">
-                    support@sangfroidtechnologies.com
+                  <a href="mailto:ceo@sangfroidtechnologies.com" className="text-purple-700 hover:underline">
+                    ceo@sangfroidtechnologies.com
                   </a>
                 </div>
 
